@@ -14,12 +14,10 @@ clear; close all; clc;
 knight1_health = 50;
 knight1_attack = 5;
 knight1_weapon = 'sword';
-knight1_armour = 'helmet';
 
 knight2_health = 60;
 knight2_attack = 7;
 knight2_weapon = 'spear';
-knight2_armour = 'shield';
 
 
 %% simulate fight

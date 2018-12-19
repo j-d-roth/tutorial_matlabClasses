@@ -5,8 +5,8 @@
 % Project idea: create a video game
 % Premise: knights fight each other
 %
-% Example 3: matlab class with static methods and properties
-
+% Example 2: matlab class with static methods
+%
 
 clear; close all; clc;
 
@@ -30,19 +30,21 @@ k2
 
 %%%%%%%%%%%%%%
 %% simulate fight actions
-k1 = knight.getsHit(k1,5); % what happens if you remove the "k1 = " from the front?
+k1 = getsHit(k1,5); % what happens if you remove the "k1 = " from the front?
 %%
-k1 = knight.getsHit(k1,k2.attack);
+k1 = getsHit(k1,k2.attack);
 %%
-k2 = knight.getsHit(k2,k1.attack);
+k2 = getsHit(k2,k1.attack);
 %%
-k1 = knight.flexes(k1);
+k1 = flexes(k1);
 %%
-k1 = knight.roars(k1);
+k1 = roars(k1);
 %%
-k2 = knight.showsOff(k2);
+k2 = showsOff(k2);
 %%
-k1 = knight.talksSmack(k1);
+k1 = talksSmack(k1);
 %%
 isDead(k1)
+
+
 

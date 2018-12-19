@@ -6,75 +6,46 @@ classdef weapon < handle
     % Project idea: create a video game
     % Premise: knights fight each other
     %
-    % Example 4: matlab objected oriented programming
-    %
-    % examples of constraints on properties, and set/get methods
-    %
-    % for more on property attributes, see:
-    % https://www.mathworks.com/help/matlab/matlab_oop/property-attributes.html
+    % Example 5: matlab objected oriented programming with handles
+    % note: nothing really changes with the functionality of this class
+
     
     %%%%%%%%%%%%
     % PUBLIC PROPERTIES
-    properties (Dependent, SetAccess = 'private')
+    properties
         type; % type of weapon
-        attack; % damage weapon inflicts
-        attack_critical; % how much damage does a critical hit do?
+        base_attack; % amount of damage done when used
     end
     
-    %%%%%%%%%%%%
-    % HIDDEN PROPERTIES
-    properties (Hidden)
-       typeNum;  % index of which weapon the object is
-    end
-    properties (Constant, Hidden)
-        % library of all possible weapons
-        possibleWeapons = struct('type',{'sword','spear','mace','lance','rubber chicken'},...
-                                 'attack',{5,6,4,6,1},...
-                                 'criticalHitModifier',{1.25,1.1,2.5,1.25,20.00});
-    end
-    
-    %%%%%%%%%%%%
-    % CLASS METHODS
     methods 
-        %%%%%%%%%%%%
-        % CONSTRUCTOR
-        function obj = weapon(typeNum)
+        function obj = weapon(typeNum) % MUST HAVE SAME NAME AS CLASS
             % CONSTRUCTOR FUNCTION. Goal: instantiate the undefined
             % properties. If user doesnt specify when constructing this
             % object, provide default values.
-            % set the weapon type from a discrete set of options
+            % set the armour type from a discrete set of options
             if nargin == 0
-                nPossibleWeapons = length(obj.possibleWeapons);
-                typeNum = randi(nPossibleWeapons); %randomly choose weapon
+                typeNum = randi(5);
             end
-            obj.typeNum = typeNum; % note: redirects to set function
-        end
-        
-        %%%%%%%%%%%%
-        % SET FUNCTIONS
-        function set.typeNum(obj,typeNum)
-            % sets weapon index, but checks that number is valid first
-            nPossibleWeapons = length(obj.possibleWeapons); % could also be "weapon.possibleWeapons" since it is a constant property
-            if typeNum > nPossibleWeapons
-                error(['Weapon type number must be between 1 and ' num2str(nPossibleWeapons)])
+            
+            switch typeNum
+                case 1
+                    obj.type = 'sword';
+                    obj.base_attack = 5;
+                case 2
+                    obj.type = 'spear';
+                    obj.base_attack = 6;
+                case 3
+                    obj.type = 'mace';
+                    obj.base_attack = 7;
+                case 4
+                    obj.type = 'lance';
+                    obj.base_attack = 8;
+                case 5
+                    obj.type = 'rubber chicken';
+                    obj.base_attack = 1;
+                otherwise
+                    error('Weapon type number must be between 1 and 5')
             end
-            obj.typeNum = typeNum; % set weapon type index
-        end
-        
-        %%%%%%%%%%%%
-        % GET FUNCTIONS
-        function t = get.type(obj)
-            % displays the type of weapon
-            t = weapon.possibleWeapons(obj.typeNum).type;
-        end
-        function a = get.attack(obj)
-            % displays the attack value of weapon
-            a = weapon.possibleWeapons(obj.typeNum).attack;
-        end
-        function ac = get.attack_critical(obj)
-            % displays the how much damage a critical hit would give
-            criticalHitModifier = weapon.possibleWeapons(obj.typeNum).criticalHitModifier;
-            ac = criticalHitModifier*obj.attack;
         end
     end %methods
 end

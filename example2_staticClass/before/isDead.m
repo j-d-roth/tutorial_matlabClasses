@@ -1,4 +1,4 @@
-function TF = isDead(knight)
+function TF = isDead(knight) % check if knight is dead
 % Filename: isDead.m
 % Author:   Samuel Acuña
 % Date:     18 Dec 2018
@@ -11,9 +11,10 @@ function TF = isDead(knight)
 % Description:
 % checks if knight is dead
 
+TF = 0; % default is alive
 if knight.health <= 0
-    TF = true;
-else
-    TF = false;
+    disp([knight.name ' is dead.']);
+    TF = 1;
 end
+
 end
