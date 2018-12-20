@@ -13,6 +13,12 @@
 %
 % for more on implementing a handle class, see
 % https://www.mathworks.com/help/matlab/ref/handle-class.html
+%
+% NOTE: this code works best by running individual 
+% sections (or cells) individually. This can be done by 
+% pressing "run section" or "run and advance" in the 
+% editor tab (i recommend memorizing the keyboard shortcut).
+% for more information, see: https://www.mathworks.com/help/matlab/matlab_prog/run-sections-of-programs.html
 
 clear; close all; clc;
 return
